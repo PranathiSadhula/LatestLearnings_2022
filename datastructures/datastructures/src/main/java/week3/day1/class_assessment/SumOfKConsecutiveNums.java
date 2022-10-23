@@ -1,4 +1,4 @@
-package week3.assessment;
+package week3.day1.class_assessment;
 
 import org.junit.Assert;
 import org.junit.Test;
