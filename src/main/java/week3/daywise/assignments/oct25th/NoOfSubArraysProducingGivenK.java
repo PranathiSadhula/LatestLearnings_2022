@@ -80,7 +80,7 @@ public class NoOfSubArraysProducingGivenK {
 
         int target = 19;
         int output =  18;
-        Assert.assertEquals(output, getCountOfSubArraysSW(nums, target));
+        Assert.assertEquals(output, getCountOfSubArrays(nums, target));
 
     }
 
