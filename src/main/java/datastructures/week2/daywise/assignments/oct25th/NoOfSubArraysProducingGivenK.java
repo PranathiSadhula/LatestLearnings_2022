@@ -74,17 +74,17 @@ public class NoOfSubArraysProducingGivenK {
 
 
 
-    @Test
+   // @Test
     public void test(){
-        int[] nums = {10,9,10,4,3,8,3,3,6,2,10,10,9,3};
+        int[] nums = {20,9,10,4,3,8,3,3,6,2,10,10,9,3};
 
         int target = 19;
         int output =  18;
-        Assert.assertEquals(output, getCountOfSubArrays(nums, target));
+        Assert.assertEquals(output, numSubarrayProductLessThanK(nums, target));
 
     }
 
-   // @Test
+   @Test
     public void test3() {
         int[] nums = {10,5,2,6};
 
@@ -132,32 +132,47 @@ public class NoOfSubArraysProducingGivenK {
 
     private int getCountOfSubArraysSW(int[] nums, int k) {
 
+        if(k == 0) return 0;
         if (nums.length == 1) {  //o[1]
             if (nums[0] < k) return 1;
             else return 0;
         }
         int noOfSubArrays = 0;
         long prod = 1;
-        long locProd = nums[0];
+
         int start = 0;
         int end = 0;
 
-        while (end < nums.length) prod *= nums[end++];  //o[n]
+       // while (end < nums.length) prod *= nums[end++];  //o[n]
 
-        int index = 0;
-        while (start < nums.length - 1) {
-            if (nums[start] < k) noOfSubArrays++;
-            prod /= nums[start];
-            if (prod < k) noOfSubArrays++;
-            locProd *= nums[start + 1];
-            if (locProd < k) noOfSubArrays++;
-            else {
-                locProd /= nums[index++];
-
+      for (; end < nums.length; end++) {
+            prod *= nums[end];
+            while (start <= end && prod >= k) {
+                prod /= nums[start++];
             }
-            start++;
+            noOfSubArrays += end - start + 1;
 
         }
+
+
         return noOfSubArrays;
+    }
+
+
+
+
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        if (k == 0) return 0;
+        int cnt = 0;
+        int pro = 1;
+
+        for (int i = 0, j = 0; j < nums.length; j++) {
+            pro *= nums[j];
+            while (i <= j && pro >= k) {
+                pro /= nums[i++];
+            }
+            cnt += j - i + 1;
+        }
+        return cnt;
     }
 }
