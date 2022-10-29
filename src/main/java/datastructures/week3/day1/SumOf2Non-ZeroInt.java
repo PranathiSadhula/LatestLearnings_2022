@@ -14,10 +14,16 @@ public Class Sumof2Non-ZeroInt {
         
     */
     public int[] getNoZeroIntegers(int n) {
-        in
+        if(n % 10 == 0) return new int[] {1, n-1};
+        int[] output = new int[2];
+        
+        if((n-1) % 10 == 0) return new int[] {2, n-2};
+        else 
+        
+        return new int[] {1, n-1};
         
     }
-    
+
     /**
         public void test(){
         
