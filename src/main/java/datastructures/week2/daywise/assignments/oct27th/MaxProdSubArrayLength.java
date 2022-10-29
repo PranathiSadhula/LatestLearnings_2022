@@ -1,4 +1,11 @@
-/**
+package datastructures.week2.daywise.assignments.oct27th;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class MAxProbSubArrayLength{
+
+ /**
 Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
 
 The test cases are generated so that the answer will fit in a 32-bit integer.
@@ -35,6 +42,7 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
     Assert.assertEquals(expected, maxProdSubArrLength(nums));
  }
 
+@Test
  public void test2(){
     int[] nums = {-2,4,2,-1};
     int expected = 16;
@@ -115,3 +123,5 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
 
         
   }
+
+}
