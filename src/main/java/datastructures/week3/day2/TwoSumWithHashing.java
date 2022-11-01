@@ -1,4 +1,9 @@
-public Class TwoSumWithHashing{
+package datastructures.week3.day2;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class TwoSumWithHashing{
 /*
 	 * Given input array, find out sum of 2 elts summing up to match given target and return the indices of those elts
 	 *

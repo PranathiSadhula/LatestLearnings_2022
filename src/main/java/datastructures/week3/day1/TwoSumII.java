@@ -1,4 +1,6 @@
-public Class TwoSumII
+package datastructures.week3.day1;
+
+public class TwoSumII
 {
      /**
     approach 2 :

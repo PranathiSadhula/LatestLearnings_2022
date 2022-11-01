@@ -1,4 +1,6 @@
-public Class StringBasics{
+package datastructures.week3.day2;
+
+public class StringBasics{
 
 
  @org.junit.Test
