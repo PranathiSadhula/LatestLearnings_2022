@@ -16,7 +16,11 @@ public class  HashingBasics{
         - so, on hashing value 3times rt shifting is performed
         - 
 
-    
+
+     get call :
+     - computes the hash for key
+     - goes to the index
+     - gets the
     
      */
 }

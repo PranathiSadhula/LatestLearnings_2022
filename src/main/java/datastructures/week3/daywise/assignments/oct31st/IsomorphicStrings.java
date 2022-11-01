@@ -66,11 +66,11 @@ public class IsomorphicStrings {
 
         char[] sChars = s.toCharArray();
         char[] tChars = t.toCharArray();
-        HashMap<Character, Character> map = new HashMap<Character, Character>();
+        HashMap<Character, Character> map = new HashMap<>();
 
-        for (int i = 0; i < tChars.length; i++) {
-            if (map.containsKey(sChars[i]) && map.get(sChars[i]) != tChars[i]) return false;
-            if (map.containsValue(tChars[i])) {
+        for (int i = 0; i < tChars.length; i++) { //o[n]
+            if (map.containsKey(sChars[i]) && map.get(sChars[i]) != tChars[i]) return false; //o[n]
+            if (map.containsValue(tChars[i])) { //o[
                 Set<java.util.Map.Entry<Character, Character>> entries =  map.entrySet();
                 for(java.util.Map.Entry<Character, Character> eachEntry : entries){
                     if(eachEntry.getValue() == tChars[i] && eachEntry.getKey() != sChars[i]) return false;
