@@ -83,7 +83,11 @@ public class DestinationCity {
         paths.add("IhxjNbDeXk");
         inputPaths.add(paths);
 
-
+/**
+ *   List<List<String>>  inputPaths1 =  Arrays.asList(Arrays.asList("B","C"),Arrays.asList("D","B"),Arrays.asList("C","A"));
+ *
+ *         List<List<String>> paths1 = Arrays.asList(Arrays.asList("B","C"),Arrays.asList("D","B"),Arrays.asList("C","A"));
+ */
 
        String ouput = "wRPRHznLWS";
         Assert.assertEquals(ouput, getDestination(inputPaths));
@@ -109,7 +113,18 @@ public class DestinationCity {
         paths.add("A");
         inputPaths.add(paths);
 
-
+        /**
+         *
+         *  List<List<String>> inputPaths = new ArrayList<List<String>>();
+         *
+         *
+         *
+         * List<List<String>> paths = Arrays.asList(Arrays.asList(new String[] {"B","C"}));
+         *
+         * 	List<List<String>> paths = Arrays.asList(Arrays.asList("B","C"),Arrays.asList("D","B"),Arrays.asList("C","A"));
+         * 	String s = destCity(paths);
+         * 	Assert.assertEquals(s, "A");
+         */
 
         String ouput = "A";
         Assert.assertEquals(ouput, getDestinationIterate(inputPaths));
