@@ -56,11 +56,11 @@ public class GoodSubStr {
 
 
     private int goodSubStrs(String s){
-        if(s.length() < 3) return 0;
+        if(s.length() < 3) return 0; //o{1]
 
         HashSet<Character> set = new HashSet<>();
 
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < 3; i++){ //o[3]
             if(s.length() == 3 && set.contains(s.charAt(i))) return 0;
             set.add(s.charAt(i));
         }
@@ -69,7 +69,7 @@ public class GoodSubStr {
         set.clear();
         int start = 1;
         int end = 1;
-        while(start < s.length() && end < s.length()){
+        while(start < s.length() && end < s.length()){ //o[n*m]
             if(set.contains(s.charAt(end))) {
                 set.clear();
                 start++;
@@ -85,7 +85,7 @@ public class GoodSubStr {
             }
 
         }
-        return count;
+        return count; //o[n]+o[n*m]
 
     }
 
