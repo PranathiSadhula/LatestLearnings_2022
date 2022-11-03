@@ -72,7 +72,8 @@ public class UniqueEmails {
           String domain =  eachEmail.split("@")[1];
 
         //  if(!local.matches("[a-z\\.\\+].*")) throw new RuntimeException("invalidTest");
-          local = local.replace(".","");
+          local = local.replaceAll("\\.","");
+          //
           if(local.contains("+")) local = local.substring(0, local.indexOf("+"));
         //  System.out.println(map.put(local,domain) +":"+ domain);
         try {
