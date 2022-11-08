@@ -1,4 +1,4 @@
-package datastructures.week4.day1;
+package datastructures.week4.day2;
 
 import org.junit.Assert;
 import org.junit.Test;
