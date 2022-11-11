@@ -106,10 +106,49 @@ public class KeyBoardRow {
     }
 
 
+    private String[] singleRowWordsboolean(String[] words) {
+
+        String row1 = "qwertyuiop", row2 = "asdfghjkl", row3 = "zxcvbnm";
+
+        List<String> output = new ArrayList<>();
+
+        for (String eachWord : words) {
+            boolean isrow1 = false;
+            boolean isrow2 = false;
+            boolean isrow3 = false;
+            char[] charArray = eachWord.toLowerCase().toCharArray();
+            for (char c : charArray) {
+
+                if (row1.contains(c + "")) {
+                    isrow1 = true;
+                }
+                if (row2.contains(c + "")) {
+                    isrow2 = true;
+                }
+                if (row3.contains(c + "")) {
+                    isrow3 = true;
+                }
+
+            }
+
+            if (isrow1 && !isrow2 && !isrow3) {
+                output.add(eachWord);
+            }
+            if (isrow2 && !isrow1 && !isrow3) {
+                output.add(eachWord);
+            }
+            if (isrow1 && !isrow2 && !isrow3) {
+                output.add(eachWord);
+            }
+        }
+        return output.toArray(new String[output.size()]);
+    }
+
+
     @Test
     public void test(){
         String[] words = {"Hello","Alaska","Dad","Peace"};
         String[] output = {"Alaska","Dad"};
-        Assert.assertArrayEquals(output, singleRowWordsCount(words));
+        Assert.assertArrayEquals(output, singleRowWordsboolean(words));
     }
 }
