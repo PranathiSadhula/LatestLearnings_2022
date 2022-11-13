@@ -79,14 +79,112 @@ public class FindAllAnagrams {
     public void test1() {
         String s1 = "cbaebabacd";
         String s2 = "abc";
-        anagramUsingSW(s1, s2);
+        returnAnagramIndices1(s1, s2);
     }
 
     @Test
     public void test2() {
-        String s1 = "abab";
-        String s2 = "ab";
-        anagramUsingSW(s1, s2);
+        String s = "abab";
+        String p = "ab";
+        anagramUsingSW(s,p);
        // Assert.assertArrayEquals(anagramUsingSW(s1, s2), new int[] { 0, 1, 2 });
+    }
+
+
+    /**
+     * slidingWindow approach:
+     * - load p string into pMap with each character and its occurance.
+     * - initialize smap with character and integer as key value pair.
+     * - initialize list of integers to output indices.
+     * - first for loop, take window length of p.length startign from 0 to add each chars and its occureance into smap.
+     * - check if smap.equals pmap, if yes -> add startIndx to output.
+     * - initialize end = p.length -1.
+     * - in 2nd for loop starting from start = 1 until end < s.length
+     * - keep adding each chars and its occureance into smap.
+     * - when start reaches end, check if smap equala with pmap. if yes, add start to output.
+     * - else, remove elt at start from smap, and add elt at end indices resp.
+     */
+
+    private List<Integer> returnAnagramIndices(String s, String p){
+        HashMap<Character, Integer> pMap = new HashMap<>();
+        for(char c : p.toCharArray()){
+            pMap.put(c, pMap.getOrDefault(c,0)+1);
+        }
+        HashMap<Character, Integer> sMap = new HashMap<>();
+
+        List<Integer> output = new ArrayList<>();
+        int start = 0;
+        int end = p.length()-1;
+        while(start <= end){
+            sMap.put(s.charAt(start), sMap.getOrDefault(s.charAt(start++),0)+1);
+        }
+        start = 0;
+        if(pMap.equals(sMap))  output.add(start);
+
+        start = 1;
+        end  = start;
+        sMap.clear();
+        while(end < s.length()){
+            sMap.put(s.charAt(end), sMap.getOrDefault(s.charAt(end++),0)+1);
+            if(end - start == p.length()) {
+                if(pMap.equals(sMap))  output.add(start);
+                if(sMap.get(s.charAt(start)) > 1){
+                    sMap.put(s.charAt(start), sMap.get(s.charAt(start++))-1);
+                }else{
+                    sMap.remove(s.charAt(start++));
+                }
+            }
+
+        }
+        return output;
+
+    }
+
+
+    private List<Integer> returnAnagramIndices1(String s, String p) {
+        if (s.length() < p.length()) {
+            String temp = s;
+            s = p;
+            p = temp;
+        }
+        HashMap<Character, Integer> pMap = new HashMap<>();
+        for (char c : p.toCharArray()) {
+            pMap.put(c, pMap.getOrDefault(c, 0) + 1);
+        }
+        HashMap<Character, Integer> sMap = new HashMap<>();
+
+        List<Integer> output = new ArrayList<>();
+        int start = 0;
+
+        for (int end = 0; end < s.length(); end++) {
+            if (sMap.containsKey(s.charAt(end))) {
+                sMap.put(s.charAt(end), sMap.get(s.charAt(end++)) - 1);
+
+            }
+            while (start <= end) {
+                sMap.put(s.charAt(start), sMap.getOrDefault(s.charAt(start++), 0) + 1);
+            }
+            start = 0;
+            if (pMap.equals(sMap)) output.add(start);
+
+            start = 1;
+            end = start;
+            sMap.clear();
+            while (end < s.length()) {
+                sMap.put(s.charAt(end), sMap.getOrDefault(s.charAt(end++), 0) + 1);
+                if (end - start == p.length()) {
+                    if (pMap.equals(sMap)) output.add(start);
+                    if (sMap.get(s.charAt(start)) > 1) {
+                        sMap.put(s.charAt(start), sMap.get(s.charAt(start++)) - 1);
+                    } else {
+                        sMap.remove(s.charAt(start++));
+                    }
+                }
+
+            }
+            return output;
+
+        }
+        return null;
     }
 }
