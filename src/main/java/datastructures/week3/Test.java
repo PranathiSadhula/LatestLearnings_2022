@@ -1,4 +1,4 @@
-package test;
+package datastructures.week3;
 
 import org.junit.Assert;
 
