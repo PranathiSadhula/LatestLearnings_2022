@@ -1,4 +1,4 @@
-package datastructures.week6.day1;
+package datastructures.week6.day1.singleLL;
 
 public  class singleLLImplementation {
     Node head;
@@ -32,9 +32,21 @@ public  class singleLLImplementation {
         else head = head.nextNode;
         length--;
     }
+    public boolean removeLast() {
+        Node temp = head;
+        while(temp.nextNode != null){
+            if(temp.nextNode.nextNode == null) {
+                temp.nextNode = null;
+                length--;
+                return true;
+            }
+            temp = temp.nextNode;
+        }
+        return false;
+    }
     public boolean remove(int value){ // 3
         Node temp = head;
-        while(temp != null){  //1,2,3,4,5  -> 1,2,4,5
+        while(temp.nextNode != null){  //1,2,3,4,5  -> 1,2,4,5
             if(temp.nextNode.nodeValue == value) {
                 temp.nextNode = temp.nextNode.nextNode;  //1,2,3,5
                 length--;
@@ -43,6 +55,23 @@ public  class singleLLImplementation {
             temp = temp.nextNode;
         }
         throw new RuntimeException("value["+value+"] not present in list");
+    }
+
+    public boolean removeByIndex(int indexToRemove){ // 3
+        if(indexToRemove > length-1) throw new RuntimeException("index["+indexToRemove+"]is out of range");
+        Node temp = head;
+        int nodeIndex = 0;
+        while(temp != null){  //1,2,3,4,5  -> 1,2,4,5
+            if (nodeIndex == indexToRemove-1){
+                temp.nextNode = temp.nextNode.nextNode;  //1,2,3,5
+                length--;
+                return true;
+            }
+            temp = temp.nextNode;
+            nodeIndex++;
+        }
+        throw new RuntimeException("value at index["+indexToRemove+"] not present in list");
+
     }
 
     public boolean removeAll(int value) { // 3
@@ -62,14 +91,7 @@ public  class singleLLImplementation {
     }
 
     //ToDO
-    public void removeLast() {
-        Node temp = head.nextNode;
-        while(temp != null){
-            if(temp.nextNode == null)  temp = null;
-            else temp = temp.nextNode;
-        }
-        length--;
-    }
+
 
    public int get(int value){
        Node temp = head;
@@ -98,10 +120,13 @@ public  class singleLLImplementation {
 
     public void print(){
         Node temp = head;
+        System.out.print("[");
         while(temp != null){
-            System.out.println(temp.nodeValue);
+            System.out.print(temp.nodeValue+",");
             temp = temp.nextNode;
         }
+        System.out.print("]");
+        System.out.println();
     }
 
 }

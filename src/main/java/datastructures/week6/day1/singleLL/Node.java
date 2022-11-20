@@ -1,4 +1,4 @@
-package datastructures.week6.day1;
+package datastructures.week6.day1.singleLL;
 
 public  class Node {
     Integer nodeValue;
