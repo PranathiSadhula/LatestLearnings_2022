@@ -26,8 +26,8 @@ public class LinkedListImplementation {
     /**
      * Please do implement below methods,
      *
-     * remove(int index)
-     * remove int value)
+     * remove(int index) ==> done
+     * remove int value)  ==> done
      * set(int index, int value)  ==> done
      * get(int index) ==> done
      *
