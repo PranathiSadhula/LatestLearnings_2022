@@ -5,7 +5,7 @@ import org.junit.Test;
 public  class TestSingleLL{
     @Test
     public void test() {
-     singleLLImplementation ssl = new singleLLImplementation();
+     SingleLLImplementation ssl = new SingleLLImplementation();
      ssl.add(1);
      ssl.add(2);
      ssl.add(3);
@@ -16,8 +16,10 @@ public  class TestSingleLL{
      ssl.add(5);
      ssl.add(6);
      System.out.println("size -->" + ssl.size());
+     System.out.println("tail -->" + ssl.tail.nodeValue);
      ssl.print();
-
+     System.out.println("index of 5 ==>"+ssl.indexOf(5));
+     System.out.println("lastIndex of 5 ==>"+ssl.lastIndexOf(5));
      ssl.removeFirst();
      System.out.println("size -->" + ssl.size());
      ssl.print();

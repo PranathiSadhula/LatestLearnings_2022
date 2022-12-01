@@ -29,7 +29,6 @@ public class FindPermutationOfGivenWord {
 
         for(int i = 0; i < s.length(); i++){
             String res = s.substring(0,i)+s.substring(i+1);
-
             returnPermutation(res, pStr+s.charAt(i), output);
         }
     }

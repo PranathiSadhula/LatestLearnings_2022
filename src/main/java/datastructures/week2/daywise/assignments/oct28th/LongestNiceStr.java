@@ -136,6 +136,24 @@ public void test4(){
         }
 
 
+    private String getNiceStrngAscii(String s) {
+        boolean isNiceSubStr = false;
+        for (int i = 0; i < s.length(); i++) {
+            char curChar = s.charAt(i);
+          if(s.indexOf(curChar - 32) != -1 ){
+            return "";
+          }
+          else if( s.indexOf(curChar + 32) != -1) return "";
+          else
+                isNiceSubStr = true;
+        }
+
+        if (isNiceSubStr)
+            return s;
+        return "";
+    }
+
+
 
     }
     

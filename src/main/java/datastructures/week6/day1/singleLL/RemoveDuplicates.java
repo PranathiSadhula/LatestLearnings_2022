@@ -65,5 +65,18 @@ public class RemoveDuplicates {
     }
 
 
+    @Test
+    public void test(){
+
+        ListNode head = new ListNode(1);
+
+        head.nextNode.nodeValue = 1;
+        head.nextNode.nextNode.nodeValue = 2;
+        head.nextNode.nextNode.nextNode.nodeValue = 3;
+        head.nextNode.nextNode.nextNode.nextNode.nodeValue = 3;
+
+        deleteDuplicates(head);
+
+    }
 
 }

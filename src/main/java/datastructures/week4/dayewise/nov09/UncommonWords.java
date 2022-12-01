@@ -31,7 +31,7 @@ public class UncommonWords {
        for( Map.Entry<String, Integer> entries: map.entrySet()){
            if(entries.getValue() == 1) output.add(entries.getKey());
        }
-       return output.toArray(new String[output.size()]);
+      return output.toArray(new String[output.size()]);
     }
 
 
