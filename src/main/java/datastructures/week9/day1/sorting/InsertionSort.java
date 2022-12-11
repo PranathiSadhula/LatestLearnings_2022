@@ -66,4 +66,30 @@ public class InsertionSort {
         Assert.assertArrayEquals(new int[]{-8,-7,-6,-5,7,8}, insertionSort(nums));
      //   Assert.assertArrayEquals(new int[]{8,7,-5,-6,-7,-8}, insertionSortDes(nums));
     }
+
+    @Test
+    public void test6(){
+         int[] heights = {17233,32521,14087,42738,46669,65662,43204,8224};
+        Assert.assertArrayEquals(new int[]{65662,46669,43204,42738,32521,17233, 14087, 8224}, insertionSortDes(heights));
+        //   Assert.assertArrayEquals(new int[]{8,7,-5,-6,-7,-8}, insertionSortDes(nums));
+    }
+
+    private int[] insertionSortDes(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) { //o[n]
+            if (nums[i] < nums[i + 1]) {
+                int temp = nums[i + 1];
+                nums[i + 1] = nums[i];
+                nums[i] = temp;
+                for (int j = 0; j < i; j++) { //o[m]
+                    if (nums[j] < nums[i]) {
+                        temp = nums[i];
+                        nums[i] = nums[j];
+                        nums[j] = temp;
+                    }
+                }
+            }
+
+        }
+        return nums;
+    }
 }

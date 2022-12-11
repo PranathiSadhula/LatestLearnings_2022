@@ -35,6 +35,9 @@ public class MergeSortedLists {
      */
     class ListNode {
         int val;
+        ListNode head;
+        ListNode tail;
+        int length;
         ListNode next;
 
         ListNode() {
@@ -48,26 +51,47 @@ public class MergeSortedLists {
             this.val = val;
             this.next = next;
         }
+
+        public void add(int val, ListNode nodetoAdd){
+            ListNode temp = new ListNode(val);
+            temp.next = nodetoAdd;
+                if(tail == null){
+                     tail = temp;
+                    head = temp;
+                }
+                else{
+                    tail.next = temp;
+                    tail = temp;
+                }
+             length++;
+        }
     }
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if(list1 == null && list2 == null) return null;
+        else if(list1 == null) return list2;
+        else if(list2 == null) return list1;
+
         ListNode temp1 = list1;
         ListNode temp2 = list2;
-        ListNode mergedList = new ListNode(temp1.val);
-        int mergeIndex = 0;
-        while (temp1 != null) {
-            if (temp1.val <= temp2.val) {
-                ListNode movableNode = temp1.next;
-                mergedList.next =  new ListNode(temp2.val);
-                mergedList.next.next = movableNode;
-                mergeIndex++;
+        ListNode mergedList = new ListNode();
+        ListNode curListNode = mergedList;
+        while (temp1 != null || temp2 != null) {
+
+            if(temp2 == null ||temp1 != null && temp1.val < temp2.val){
+                curListNode.next = new ListNode(temp1.val);
+                temp1 = temp1.next;
             }
-            temp1 = temp1.next;
-            temp2 = temp2.next;
+            else {
+               curListNode.next = new ListNode(temp2.val);
+               temp2 = temp2.next;
+           }
+            curListNode = curListNode.next;
+
         }
 
 
-        return temp1;
+        return mergedList.next;
     }
 
 
@@ -76,6 +100,17 @@ public class MergeSortedLists {
 
         ListNode head1 = new ListNode(1, new ListNode(2, new ListNode(4)));
         ListNode head2 = new ListNode(1,new ListNode(3, new ListNode(4)));
+
+        // ListNode head2 = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
+        mergeTwoLists(head1, head2);
+
+    }
+
+    @Test
+    public void test1(){
+
+        ListNode head1 = new ListNode(1);
+        ListNode head2 = new ListNode(2);
 
         // ListNode head2 = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
         mergeTwoLists(head1, head2);
