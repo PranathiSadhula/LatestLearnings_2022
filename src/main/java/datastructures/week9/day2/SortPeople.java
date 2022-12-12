@@ -3,10 +3,7 @@ package datastructures.week9.day2;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortPeople {
@@ -78,6 +75,37 @@ public void test(){
         Assert.assertArrayEquals(new String[]{"Emma", "Mary", "John"}, sortPeopleMap(names, heights));
     }
 
+    @Test
+    public void testTreeMap(){
+        String[] names = {"Mary","John","Emma", "Abc"};
+        int[] heights = {180,165,190, 165};
+        Assert.assertArrayEquals(new String[]{"Emma", "Mary", "Abc", "John"}, sortPeopleTreeMap(names, heights));
+    }
+
+    private String[] sortPeopleTreeMap(String[] names, int[] heights){
+        TreeMap<Integer, ArrayList<String>> map =  new TreeMap<>();
+        for(int i = 0; i < names.length; i++){
+            if(map.containsKey(heights[i])){
+                ArrayList<String> namesList =map.get(heights[i]);
+                         namesList.add(names[i]);
+                map.put(heights[i], namesList);
+            }
+            else{
+                ArrayList<String> namesList = new ArrayList<>();
+                namesList.add(names[i]);
+                map.put(heights[i],namesList);
+            }
+        }
+        int indx = names.length-1;
+        for(List<String> sortedNames : map.values()){
+            for (String s : sortedNames){
+                names[indx--] = s;
+            }
+        }
+
+        return names;
+
+    }
 
 
 
