@@ -37,36 +37,59 @@ public class LongestPolindromSubStr {
      */
     @Test
     public void test(){
-        String s = "babad";
-        Assert.assertEquals("bab", longestPolindrom(s));
+        String s = "bacad";
+        Assert.assertEquals("aca", longestPolindrom(s));
     }
 
+    @Test
+    public void test1(){
+        String s = "bacbd";
+        Assert.assertEquals("c", longestPolindrom(s));
+    }
 
-    private String longestPolindrom(String s){
+    @Test
+    public void test2(){
+        String s = "babad";
+        Assert.assertEquals("aba", longestPolindrom(s));
+    }
+
+    @Test
+    public void test3(){
+        String s = "babab";
+        Assert.assertEquals("babab", longestPolindrom(s));
+    }
+
+    @Test
+    public void test4(){
+        String s = "cbba";
+        Assert.assertEquals("bb", longestPolindrom(s));
+    }
+      private String longestPolindrom(String s){
         if(s == null || s.isEmpty() || s.length() == 0) return "";
-        int left = s.length()/2;
-        int right = s.length()/2;
+
+
         String res = "";
-        while(left >= 0 && right < s.length()){
-            int len1 = polindrom(s, left, right);
-            int len2 = polindrom(s, left, right+1);
-            if(len1 < len2) res = s.substring(left, right);
-            else res = s.substring(left,right+1);
-            left--;
-            right++;
+        for(int i = 0; i < s.length();i++){
+            String len1 = polindrom(s, i, i);
+            String len2 = polindrom(s, i, i+1);
+            if(len1.length() < len2.length())
+                len1 =len2;
+            if(len1.length() > res.length()) res = len1;
+
         }
         return res;
     }
 
-    private int polindrom(String s, int left, int right){
+    private String polindrom(String s, int left, int right){
 
-        while(left <= right){
-            if(s.charAt(left) != s.charAt(right)) return -1;
-            left--;
-            right++;
-        }
+       for(; left >= 0 && right <s.length();left--, right++){
+           if(s.charAt(left) != s.charAt(right)) break;
+       }
 
-        return right-left+1;
+        return s.substring(left+1, right);
 
     }
+
+
+
 }
