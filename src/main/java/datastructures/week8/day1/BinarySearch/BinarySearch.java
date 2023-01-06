@@ -13,5 +13,7 @@ public class BinarySearch {
      *          - check if midvalue > target ==> then low shoud move to mid+1
      *          - check if midvalue < tagret ==> then move high to mid-1
      *
+     *
+     * {1,3,4,2,2}
      */
 }

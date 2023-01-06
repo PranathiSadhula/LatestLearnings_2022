@@ -93,7 +93,47 @@ public class RotateNumberByK {
     public void test(){
         int num = 123400;
         int k = 2; // 3412 //1
-        Assert.assertEquals(3412,rotateNumBykDigits(num, k));
+        Assert.assertEquals(340012,rotateNumBykDigits(num, k));
 
     }
-}
+
+    @Test
+    public void test1(){
+        int num = 12003400;
+        int k = 2; // 3412 //1
+        Assert.assertEquals(340012,rotateNumBykDigits(num, k));
+
+    }
+
+    @Test
+    public void test3(){
+        int num = 12013400; //
+        int k = 3; // 3412 //1
+        Assert.assertEquals(13400120,rotateNumBykDigits(num, k));
+
+    }
+
+
+    private int rotateNumBykDigits1(int num, int k) {
+
+        int sign = 1;
+        if (num < 0) sign = -1;
+        int[] digits = new int[String.valueOf(num).length()];
+        int index = digits.length - 1;
+
+        int placeValue = 1;
+        while (num > 0) {
+            digits[index] = num % 10;
+            num /= 10;
+            if (index > 0)
+                placeValue *= 10; // 1000
+            index--;
+        }
+        System.out.println(Arrays.toString(digits));
+
+
+
+        return 0;
+
+    }
+    }

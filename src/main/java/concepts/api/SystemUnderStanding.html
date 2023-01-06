@@ -1,0 +1,146 @@
+
+
+For a QA, understanding a system and its design helps you to avoid raising invalid bugs.
+Before APIs, CORBA(Common Object Req Broker Architecture) and RPC(Remote Procedute Calls)
+<body>
+<h1>What's Before API</h1>
+<p>The purpose is to ensure 2systems talk to each other.<br>
+    Before API, <ol><li><a href="Common Object Request Broker Architecute">CORBA</a> </li>
+    <li><a href="Remote Procedure Calls">RPC</a> </li></ol>
+</p>
+<p><b>What is API?</b> <br>
+Any utility serving a purpose, is called API
+<br><span>jar files, String api, java api doc etc</span>
+
+</p>
+
+</body>
+
+<b>What is API? -> application program interface.</b><br>
+<p>APIs are little pieces of codes that makes it possible for digital devices. s/w applns and data servers to talk with each other.</p>
+<br>
+
+<b>How API works?</b>
+<br>
+<ul>
+<li>Api acts like middleman.</li>
+<li>API contains some set of protocals and definations to follow to serve a given purpose<i>(2 or more s/w components talk to each other)</i>.</li>
+</ul>
+<b>Why API?</b>
+<ul>
+    <li>Technology agnostic -> platform independent!</li>
+    <li>As contracts are maintained at APIs level, even if the APIs are of different tech stack, marshelling & unmarshelling is maintained correclty.
+        <br>{{ ex : service 1(front-end) designed on react.js,
+        service 2(api calls to dB) designed on RestFul services and service 3(DB connections via java)}}
+        <br></li>
+</ul>
+
+
+<h3>How Web Evolved?</h3>
+<ul>
+    <li><b>web 1.0 : </b><br> static access for resources(read-only like wikipedia)</li>
+    <li><b>web 2.0 :</b><br> data gathered, analysed and recommendation engines devolped to serve indivual as a customer
+    <br>Here, No privacy as applications became intelligent -> analysing user by collected user data</li>
+    <li><b>web 3.0 :</b><br> user became owner of his content!
+    <br> No more application intervention to collect or analyse user data.</li>
+</ul>
+
+<h3>Who uses API?</h3>
+<ul><li>In recent times, every application is integerated with APIs.<br>
+        <i>web-based apps</i><br>
+        <i> operating systems</i><br>
+    <i>data bases</i><br>
+    <i>computer hardware</i>
+</li>
+<li><b>such examples are : <ol><li>Social Media : Twitter, FaceBook, LinkedIn</li>
+<li>Content Streaming platforms</li>
+<li>Cloud platforms- AWS, Azure</li>
+<li>Selenium is built on API architecture, and this is the reason, API supports many languages</li></ol></b>
+</li>
+</ul>
+
+What before API? -> CORBA and RPC.
+
+"Any utility serving a porpuse & enables an application to perform certain action" -> is called API. ex: jar dependencies, String api, Selenium api.
+
+API - Application Programing Interface.
+
+APIs acts as intermedaite btw applications.
+
+How API works - as middleman/intermediate -> api is defined with set of definations and protocals to allow s/w components to talk to eachother.
+
+Why API? -> technology agnostic i.e, platform independent.
+
+API acts as a abstraction layer of security. -> only on authenticating a user, connection gets established and then actions(payments/reading/) performed!.
+
+How Web evovled ? - web 1.0 0> web 2.0 -> web 3.0
+
+Who uses APIs -> every application is built on APIs.
+
+Types of APIs -> 1)Request driven/ sync APIs and  2)Event Driven/Async APIs
+
+Request Driven/ Sync Apis :
+client-server model.
+flows n/w protocal.
+TelNet indicates that if a server open or not!. ex : ping to server ensures it its avaialble.
+TCP/IP --> connection oriented --> bcz of regenration of data pockets, it is widely used.
+UDP --> connection less -> this loses data pockets on connection loss. so used only in authentication or login oriented designs
+
+Types of Request Driven ApIs :
+- SOAP
+* Msginh protocal vch exchnages structured info in web serivces implementations.
+* Supports only XML.
+* Only POST method
+* WSDL based implementations.
+* heavy payload(Req+WSDL files)
+* As it is stateful(Server remembers all its previous calls), so cant be cached!
+* never have multiple end-points
+* difficult to implement.
+- REST
+* Built over HTTP protocal.
+* supports JSON/XML/Html/Multipart..
+* Lesser payloads
+* Http methods supported : POST, GET, PUT, PATCH, DELETE ...
+* As stateless, can be cached!
+Limitations of REST : always do N+1 calls, data is ether over fetched or under fetcehd!!
+
+- GraphQL
+* To address REST's limitation, facebook invented GraphQL.
+- GRPC
+
+Async/Event driven APIs :
+Publisher : generates a mesging service and drops into topic
+Topic : stores the above generated msg for a certain retaintion period.
+Cosumer : picks a msg from Topic and acknowledges back.
+
+Example of a Tweet post with async understanding :
+When a tweet is posted
+- > using /tweet as endpoint -> this inserts/creates a row into DB.
+- > Then it triggers (Change Data Capture). i.e., whenever there is an update to table -> triggers a pipline!
+- > this trigger then produces/enables a event in a queue/topic.
+- > Finally, x. no. of follwers can see the posted tweet on their feed!!.
+
+What is Topic :
+Schema(JSON/XML/AVro) should match with producers/consumers.
+Retion perios : info stays on topic for defined x hours/x days !!
+
+
+Throttling :
+Limits the access to data in 2 ways :
+-> consider ping to server on when there is a change of state/ event happend!!
+-> consider ping to server only once in any given minute!!.
+
+
+Where things can go wrong and What QA can focus!!!!
+-> pointing to wrong topic!
+-> schema mismatch!
+-> identity (handshake with incorrect certificates).
+
+
+Message Retries  -> consider only technical failures rather than functional failures!
+
+
+
+
+
+
