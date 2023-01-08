@@ -1,10 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class AllStringsMatchingPattern {
     /**
@@ -109,5 +106,39 @@ public class AllStringsMatchingPattern {
     public void test1(){
         String s = "abcd";
         System.out.println(Arrays.toString(returnAllPermWords(s)));
+    }
+
+
+
+    @Test
+    public void testNovoPay(){
+        String input = "abc";
+
+        HashSet<String> set = new HashSet<>();
+        generateNewStr(set, input, "");
+        System.out.println("no.of Strings possible with given input["+input+"] is :"+set.size());
+}
+private void generateNewStr(HashSet<String> set, String inputStr, String pStr){ // 0, "", abc, 0 //0, bca, abc, 1 // 0, cab, abc, 2
+
+    if(inputStr.length() == 0){
+        set.add(pStr); //1,
+    }
+    for(int index = 0; index < inputStr.length(); index++) {
+        String subStr = inputStr.substring(0, index); //  a  // ab // abc
+        String subStr1 = inputStr.substring(index + 1); //1 to 3 ==> bc  // 2to 3 c // 3 to 3 => ""
+
+        String curStr = subStr + subStr1; // bca // cab // abc
+
+        generateNewStr(set, curStr, pStr + inputStr.charAt(index)); //0, bca, abc, 1 // 0, cab, abc, 2 //
+    }
+    }
+
+
+    @Test
+    public void testListAdd(){
+        ArrayList<String> list = new ArrayList<>();
+        System.out.println(list.add("a"));
+        System.out.println(list.add("a"));
+
     }
 }
