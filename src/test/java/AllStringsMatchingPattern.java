@@ -92,11 +92,21 @@ public class AllStringsMatchingPattern {
         return output.toArray(new String[output.size()]);
     }
 
+        //greek
+    private void allPermStrToList(String s, String pStr, List<String> allPStrs){ // s = reek, pStr = g  // rek, ge // rk, gee // r, geek // "", geekr
+        if(s.length() == 0){
+            allPStrs.add(pStr);  // geekr
 
-    private void allPermStrToList(String s, String pStr, List<String> allPStrs){
-        if(s.length() == 0) allPStrs.add(pStr);
-        for(int i = 0; i < s.length(); i++){
-            String curStr = s.substring(0, i)+s.substring(i+1);
+        }
+        for(int i = 0; i < s.length(); i++){  //i = 0
+
+            String curStr = s.substring(0, i)+s.substring(i+1); // ""+reek // r+ek // r+k // r // ""
+                            //greek, ""
+                            //  reek, ""+g
+                            //rek,  g+e
+                            //rk, ge+e
+                            //r, gee+k
+                            //"", geek+r
             allPermStrToList( curStr,pStr+s.charAt(i), allPStrs);
         }
     }
@@ -104,7 +114,7 @@ public class AllStringsMatchingPattern {
 
     @Test
     public void test1(){
-        String s = "abcd";
+        String s = "greek";
         System.out.println(Arrays.toString(returnAllPermWords(s)));
     }
 
